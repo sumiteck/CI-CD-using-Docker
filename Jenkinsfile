@@ -25,8 +25,8 @@ pipeline {
         }
 stage('Docker Build and Tag') {
            steps {
-                            sh 'sudo docker build -t samplewebapp:latest .' 
-                sh 'sudo docker tag samplewebapp sumitk68/samplewebapp:latest'
+                            sh 'docker build -t samplewebapp:latest .' 
+                sh 'docker tag samplewebapp sumitk68/samplewebapp:latest'
                 //sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:$BUILD_NUMBER'
                
           }
@@ -37,7 +37,7 @@ stage('Docker Build and Tag') {
         
             steps {
         withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
-          sh  'docker push nikhilnidhi/samplewebapp:latest'
+          sh  'docker push sumitk68/samplewebapp:latest'
         //  sh  'docker push nikhilnidhi/samplewebapp:$BUILD_NUMBER' 
         }
                   
@@ -49,7 +49,7 @@ stage('Docker Build and Tag') {
              
             steps 
    {
-                sh "docker run -d -p 8003:8080 nikhilnidhi/samplewebapp"
+                sh "docker run -d -p 8003:8080 sumitk68/samplewebapp"
  
             }
         }
