@@ -25,6 +25,7 @@ pipeline {
         }
 stage('Docker Build and Tag') {
            steps {
+		   sh'sudo systemctl enable docker'
 		   sh'sudo chmod 666 /var/run/docker.sock'
 		   sh'sudo chgrp $USER /lib/systemd/system/docker.socket'
                    sh'sudo chmod g+w /lib/systemd/system/docker.socket'
