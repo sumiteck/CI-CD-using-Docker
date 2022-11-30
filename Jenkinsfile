@@ -50,7 +50,7 @@ stage('Docker Build and Tag') {
              
             steps 
    {
-                sh "docker run -d -p 8003:8080 sumitk68/samplewebapp"
+                sh "docker run -d -p 8003:8090 sumitk68/samplewebapp"
  
             }
         }
